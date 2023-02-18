@@ -32,7 +32,7 @@ const WorkoutPlan = () => {
   return (
     <div>
       <div className="hero-section">
-        <h1>My Workout Plan</h1>
+        <h1>My Workout Plan 1</h1>
       </div>
       <div className="home">
         <div className="workouts">

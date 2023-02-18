@@ -1,21 +1,21 @@
-const WorkoutPlan = require("../models/workoutplanModel");
+const WorkoutPlan1 = require("../models/workoutplan1Model");
 const mongoose = require("mongoose");
 
 //get all plan
-const getWorkoutPlan = async (req, res) => {
+const getWorkoutPlan1 = async (req, res) => {
   const user_id = req.user._id;
-  const workouts = await WorkoutPlan.find({ user_id }).sort({ createdAt: -1 });
+  const workouts = await WorkoutPlan1.find({ user_id }).sort({ createdAt: -1 });
 
   res.status(200).json(workouts);
 };
 
 //create new workout
-const createWorkoutPlan = async (req, res) => {
+const createWorkoutPlan1 = async (req, res) => {
   const { title, weight, reps, note, date } = req.body;
   //add to db
   try {
     const user_id = req.user._id;
-    const workout = await WorkoutPlan.create({
+    const workout = await WorkoutPlan1.create({
       title,
       weight,
       reps,
@@ -30,14 +30,14 @@ const createWorkoutPlan = async (req, res) => {
 };
 
 //delete workout
-const deleteWorkoutPlan = async (req, res) => {
+const deleteWorkoutPlan1 = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such workout" });
   }
 
-  const workout = await WorkoutPlan.findOneAndDelete({ _id: id });
+  const workout = await WorkoutPlan1.findOneAndDelete({ _id: id });
 
   if (!workout) {
     retur;
@@ -47,7 +47,7 @@ const deleteWorkoutPlan = async (req, res) => {
 };
 
 module.exports = {
-  createWorkoutPlan,
-  getWorkoutPlan,
-  deleteWorkoutPlan,
+  createWorkoutPlan1,
+  getWorkoutPlan1,
+  deleteWorkoutPlan1,
 };

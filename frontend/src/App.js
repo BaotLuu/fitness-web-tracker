@@ -8,6 +8,8 @@ import HeroLink from "./components/heroLink";
 import Goal from "./pages/goals";
 import FGoal from "./pages/fgoals";
 import Workoutplan from "./pages/workoutplan";
+import Workoutplans from "./pages/workoutplans";
+import WorkoutPlan1 from "./pages/workoutplan1";
 import FAQ from "./pages/FAQ";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { createContext, useState } from "react";
@@ -61,8 +63,20 @@ function App() {
               element={user ? <FGoal /> : <Navigate to="/fitnessgoal" />}
             />
             <Route
-              path="/workoutplan"
-              element={user ? <Workoutplan /> : <Navigate to="/workoutplan" />}
+              path="/workoutplan0"
+              element={user ? <Workoutplan /> : <Navigate to="/workoutplan0" />}
+            />
+            <Route
+              path="/workoutplans"
+              element={
+                user ? <Workoutplans /> : <Navigate to="/workoutplans" />
+              }
+            />
+            <Route
+              path="/workoutplan1"
+              element={
+                user ? <WorkoutPlan1 /> : <Navigate to="/workoutplan1" />
+              }
             />
             <Route
               path="/faq"
