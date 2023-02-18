@@ -2,7 +2,7 @@ import React from "react";
 
 function FAQ() {
   return (
-    <div style={{ color: "red", paddingLeft: "20px" }}>
+    <div style={{ paddingLeft: "30px" }}>
       <h1>Fitness Tracker Web Application FAQ:</h1>
       <h2>1. General:</h2>
       <ul>
