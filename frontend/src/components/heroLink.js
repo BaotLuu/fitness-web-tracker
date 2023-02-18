@@ -19,7 +19,7 @@ const HeroLink = () => {
         <h2>Fitness Goals</h2>
       </Link>
 
-      <Link to="/workoutplan" className="herolink-items">
+      <Link to="/workoutplans" className="herolink-items">
         <h2>Workout Plan</h2>
       </Link>
 
