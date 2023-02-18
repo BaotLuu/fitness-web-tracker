@@ -2,7 +2,7 @@ import React from "react";
 
 function FAQ() {
   return (
-    <div className="dark-mode" style={{ paddingLeft: "30px", color: "white" }}>
+    <div className="dark-mode" style={{ paddingLeft: "30px", color: "red" }}>
       <h1>Fitness Tracker Web Application FAQ:</h1>
       <h2>1. General:</h2>
       <ul>
