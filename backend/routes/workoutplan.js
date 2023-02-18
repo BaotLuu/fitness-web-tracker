@@ -4,6 +4,7 @@ const {
   getWorkoutPlan,
   createWorkoutPlan,
   deleteWorkoutPlan,
+  updateWorkoutPlan,
 } = require("../controllers/workoutplanController");
 const verifyAuth = require("../middleware/verifyAuth");
 
@@ -18,5 +19,8 @@ router.post("/", createWorkoutPlan);
 
 //delete
 router.delete("/:id", deleteWorkoutPlan);
+
+//UPDATE workout
+router.put("/:id", updateWorkoutPlan);
 
 module.exports = router;
