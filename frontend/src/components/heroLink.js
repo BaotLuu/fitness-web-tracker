@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { createContext, useState } from "react";
 
 const HeroLink = () => {
   return (

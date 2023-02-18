@@ -8,6 +8,7 @@ import HeroLink from "./components/heroLink";
 import Goal from "./pages/goals";
 import FGoal from "./pages/fgoals";
 import Workoutplan from "./pages/workoutplan";
+import FAQ from "./pages/FAQ";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { createContext, useState } from "react";
 import Switch from "react-switch";
@@ -62,6 +63,10 @@ function App() {
             <Route
               path="/workoutplan"
               element={user ? <Workoutplan /> : <Navigate to="/workoutplan" />}
+            />
+            <Route
+              path="/faq"
+              element={user ? <FAQ /> : <Navigate to="/faq" />}
             />
           </Routes>
         </div>
