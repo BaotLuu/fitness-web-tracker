@@ -28,7 +28,7 @@ header .container {
 
 
 .nav-rightside-items {
-  padding: 10px 15px;
+  margin-right: 20px;
 }
 .nav-rightside {
   white-space: nowrap;
