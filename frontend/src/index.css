@@ -23,7 +23,9 @@ header .container {
   justify-content: flex-end;
   align-items: center;
   padding-right: 5%;
+  padding-left: 5%;
 }
+
 
 .nav-rightside-items {
   margin-right: 20px;
@@ -33,6 +35,7 @@ header .container {
   font-size: 1.5rem;
   list-style: none;
   margin-right: 2rem;
+  padding-left: 2rem;
 }
 
 .nav-items:first-child {
