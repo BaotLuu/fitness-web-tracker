@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import { useWorkoutsContext } from "../../hooks/useWorkoutsContext";
+import { useWorkoutPlanContext } from "../../hooks/useWorkoutPlanContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-export default function WorkoutForm() {
+export default function WorkoutPlanForm2() {
   const [title, setTitle] = useState("");
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
+  const [date, setDate] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState(null);
-  const { dispatch } = useWorkoutsContext();
+  const { dispatch } = useWorkoutPlanContext();
   const { user } = useAuthContext();
 
-  const handleSubmit = async (e) => {
+  const handleSubmitWP1 = async (e) => {
     e.preventDefault();
 
-    const workout = { title, weight, reps, note };
+    const WorkoutPlan1 = { title, weight, reps, date, note };
 
-    const response = await fetch("/api/workouts/", {
+    const response = await fetch("/api/workoutplan2", {
       method: "POST",
-      body: JSON.stringify(workout),
+      body: JSON.stringify(WorkoutPlan1),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${user.token}`,
@@ -35,20 +36,26 @@ export default function WorkoutForm() {
       setWeight("");
       setReps("");
       setNote("");
+      setDate("");
       setError(null);
       console.log(json);
-      dispatch({ type: "CREATE_WORKOUTS", payload: json });
+      dispatch({ type: "CREATE_WORKOUTPLAN", payload: json });
     }
   };
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
+    <form className="create" onSubmit={handleSubmitWP1}>
+      <h3>Workout date</h3>
+      <input
+        type="text"
+        onChange={(e) => setDate(e.target.value)}
+        value={date}
+      />
       <h3>Add new workout</h3>
       <input
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
-        placeholder="Title"
       />
 
       <h3>Repetition</h3>
@@ -56,7 +63,6 @@ export default function WorkoutForm() {
         type="Number"
         onChange={(e) => setReps(e.target.value)}
         value={reps}
-        placeholder="Reps"
       />
 
       <h3>Weight</h3>
@@ -64,18 +70,15 @@ export default function WorkoutForm() {
         type="Number"
         onChange={(e) => setWeight(e.target.value)}
         value={weight}
-        placeholder="Weight"
       />
-
       <h3>Note</h3>
-      <textarea
+      <input
         type="text"
         onChange={(e) => setNote(e.target.value)}
         value={note}
-        placeholder="Note or Tips"
       />
 
-      <button className="addWorkout">Add Workout</button>
+      <button className="addWorkout">Add Plan</button>
       {error && <div className="error">{error}</div>}
     </form>
   );

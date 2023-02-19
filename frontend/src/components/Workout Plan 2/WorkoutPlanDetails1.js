@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useWorkoutPlan1Context } from "../../hooks/useWorkoutPlan1Context";
+import { useWorkoutPlanContext } from "../../hooks/useWorkoutPlanContext";
 
-export default function WorkoutPlanDetails1({ workoutplan1 }) {
-  const { dispatch } = useWorkoutPlan1Context();
+export default function WorkoutPlanDetails1({ workoutplan }) {
+  const { dispatch } = useWorkoutPlanContext();
   const { user } = useAuthContext();
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState("");
@@ -15,7 +15,7 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
   const [error, setError] = useState(null);
 
   const handleClick = async () => {
-    const response = await fetch("/api/workoutplan1/" + workoutplan1._id, {
+    const response = await fetch("/api/workoutplan1/" + workoutplan._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -24,13 +24,13 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_WP1", payload: json });
+      dispatch({ type: "DELETE_WORKOUTPS", payload: json });
     }
   };
   const Update = async (e) => {
     const workouts = { title, weight, reps, note };
 
-    const response = await fetch("/api/workoutplan1/" + workoutplan1._id, {
+    const response = await fetch("/api/workoutplan1/" + workoutplan._id, {
       method: "PUT",
       body: JSON.stringify(workouts),
       headers: {
@@ -51,7 +51,7 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
   };
   return (
     <div className="workout-details">
-      {!edit && <h4>{workoutplan1.title}</h4>}
+      {!edit && <h4>{workoutplan.title}</h4>}
 
       {edit && (
         <input
@@ -65,7 +65,7 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Reps:<a className="workout-details-a"> {workoutplan1.reps}</a>
+            Reps:<a className="workout-details-a"> {workoutplan.reps}</a>
           </strong>
         )}
         {edit && (
@@ -81,7 +81,7 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Weight:<a className="workout-details-a">{workoutplan1.weight}</a>
+            Weight:<a className="workout-details-a">{workoutplan.weight}</a>
           </strong>
         )}
         {edit && (
@@ -96,7 +96,7 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
       </p>
       <br />
       <p className="workout-note">
-        {!edit && <a className="workout-details-a">{workoutplan1.note}</a>}
+        {!edit && <a className="workout-details-a">{workoutplan.note}</a>}
         {edit && (
           <input
             placeholder="Note"
@@ -109,7 +109,7 @@ export default function WorkoutPlanDetails1({ workoutplan1 }) {
       </p>
 
       <p>
-        {formatDistanceToNow(new Date(workoutplan1.createdAt), {
+        {formatDistanceToNow(new Date(workoutplan.createdAt), {
           addSuffix: true,
         })}
       </p>

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useGoalContext } from "../../hooks/useGoalContext";
+import { useFGoalContext } from "../../hooks/useFGoalContext";
 
-export default function GoalForm() {
+export default function FGoalForm() {
   const { user } = useAuthContext();
-  const { dispatch } = useGoalContext();
-  const [sWeight, setstartWeight] = useState("");
+  const { dispatch } = useFGoalContext();
+  const [sTime, setStartTime] = useState("");
   const [error, setError] = useState(null);
-  const [eWeight, setEndweight] = useState("");
-  const [sRep, setSrep] = useState("");
-  const [eRep, setERep] = useState("");
+  const [eTime, setEndTime] = useState("");
+  const [sDistance, setSDistance] = useState("");
+  const [eDistance, setEDistance] = useState("");
   const [timeframe, setTimeFrame] = useState("");
   const [title, setTitle] = useState("");
 
@@ -18,14 +18,14 @@ export default function GoalForm() {
 
     const goal = {
       title,
-      sWeight,
-      eWeight,
-      sRep,
-      eRep,
+      sTime,
+      sDistance,
+      eDistance,
+      eTime,
       timeframe,
     };
 
-    const response = await fetch("/api/lgoal/liftinggoal", {
+    const response = await fetch("/api/fgoal/fitnessgoal", {
       method: "POST",
       body: JSON.stringify(goal),
       headers: {
@@ -40,20 +40,20 @@ export default function GoalForm() {
     }
     if (response.ok) {
       setTitle("");
-      setstartWeight("");
-      setEndweight("");
-      setSrep("");
-      setERep("");
+      setStartTime("");
+      setEndTime("");
+      setSDistance("");
+      setEDistance("");
       setTimeFrame("");
       setError(null);
-      console.log("new Goal added", json);
-      dispatch({ type: "CREATE_GOAL", payload: json });
+      console.log("new fGoal added", json);
+      dispatch({ type: "CREATE_FGOAL", payload: json });
     }
   };
 
   return (
     <form className="create" onSubmit={handleSubmit}>
-      <h3>Add a goal</h3>
+      <h3>Add a Goal</h3>
       <input
         type="text"
         onChange={(e) => setTitle(e.target.value)}
@@ -61,36 +61,36 @@ export default function GoalForm() {
         placeholder="Any goal"
       />
 
-      <h3>Starting lifting weight</h3>
+      <h3>Starting Body Weight</h3>
       <input
         type="text"
-        onChange={(e) => setstartWeight(e.target.value)}
-        value={sWeight}
-        placeholder="Lifting weight you started"
+        onChange={(e) => setStartTime(e.target.value)}
+        value={sTime}
+        placeholder="Starting Body Weight"
       />
 
-      <h3>Goal weight to lift</h3>
+      <h3>Goal Body Weight</h3>
       <input
         type="text"
-        onChange={(e) => setEndweight(e.target.value)}
-        value={eWeight}
-        placeholder="Lifting weight you want to reach"
+        onChange={(e) => setEndTime(e.target.value)}
+        value={eTime}
+        placeholder="Body Weight you want to reach"
       />
 
-      <h3>Repetitions</h3>
+      <h3>Calories Consumed</h3>
       <input
         type="text"
-        onChange={(e) => setSrep(e.target.value)}
-        value={sRep}
-        placeholder="Starting repetitions"
+        onChange={(e) => setSDistance(e.target.value)}
+        value={sDistance}
+        placeholder="Calories Consumed"
       />
 
-      <h3>Repetitions to reach at end of goal</h3>
+      <h3>Calories Burned</h3>
       <input
         type="text"
-        onChange={(e) => setERep(e.target.value)}
-        value={eRep}
-        placeholder="Repetition you want to reach"
+        onChange={(e) => setEDistance(e.target.value)}
+        value={eDistance}
+        placeholder="Calories Burned"
       />
 
       <h3>Goal date</h3>

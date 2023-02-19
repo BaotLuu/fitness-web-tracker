@@ -9,7 +9,8 @@ import Goal from "./pages/goals";
 import FGoal from "./pages/fgoals";
 import Workoutplan from "./pages/workoutplan";
 import Workoutplans from "./pages/workoutplans";
-import WorkoutPlan1 from "./pages/workoutplan1";
+import WorkoutPlan2 from "./pages/workoutplan2";
+import WorkoutPlan3 from "./pages/workoutplan3";
 import FAQ from "./pages/FAQ";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { createContext, useState } from "react";
@@ -45,7 +46,6 @@ function App() {
               path="/login"
               element={!user ? <Login /> : <Navigate to="/workout" />}
             />
-
             <Route
               path="/signup"
               element={!user ? <Signup /> : <Navigate to="/workout" />}
@@ -63,19 +63,25 @@ function App() {
               element={user ? <FGoal /> : <Navigate to="/fitnessgoal" />}
             />
             <Route
-              path="/workoutplan0"
-              element={user ? <Workoutplan /> : <Navigate to="/workoutplan0" />}
-            />
-            <Route
               path="/workoutplans"
               element={
                 user ? <Workoutplans /> : <Navigate to="/workoutplans" />
               }
-            />
+            />{" "}
             <Route
               path="/workoutplan1"
+              element={user ? <Workoutplan /> : <Navigate to="/workoutplan1" />}
+            />
+            <Route
+              path="/workoutplan2"
               element={
-                user ? <WorkoutPlan1 /> : <Navigate to="/workoutplan1" />
+                user ? <WorkoutPlan2 /> : <Navigate to="/workoutplan2" />
+              }
+            />
+            <Route
+              path="/workoutplan3"
+              element={
+                user ? <WorkoutPlan3 /> : <Navigate to="/workoutplan3" />
               }
             />
             <Route

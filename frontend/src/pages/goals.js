@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import GoalDetails from "../components/Lifting Goal/GoalDetails";
-import GoalForm from "../components/Lifting Goal/GoalForm";
+import GoalDetails from "../components/Fitness Goal/GoalDetails";
+import GoalForm from "../components/Fitness Goal/GoalForm";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useGoalContext } from "../hooks/useGoalContext";
 
@@ -28,7 +28,7 @@ const Goal = () => {
   return (
     <div>
       <div className="hero-section">
-        <h1>My Lifting Goal</h1>
+        <h1>My Fitness Goal</h1>
       </div>
       <div className="home">
         <div className="workouts">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import JournalDetails from "../components/Journal/JournalDetails";
 import JournalForm from "../components/Journal/JournalForm";
 import { useAuthContext } from "../hooks/useAuthContext";

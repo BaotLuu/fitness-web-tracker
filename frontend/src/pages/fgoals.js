@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import FGoalDetails from "../components/Fitness Goal/FGoalDetails";
-import FGoalForm from "../components/Fitness Goal/FGoalForm";
+import FGoalDetails from "../components/BodyWeight Goal/FGoalDetails";
+import FGoalForm from "../components/BodyWeight Goal/FGoalForm";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useFGoalContext } from "../hooks/useFGoalContext";
 
@@ -28,7 +28,7 @@ const FGoal = () => {
   return (
     <div>
       <div className="hero-section">
-        <h1>My Fitness Goal</h1>
+        <h1>My Body Weight Goal</h1>
       </div>
       <div className="home">
         <div className="workouts">

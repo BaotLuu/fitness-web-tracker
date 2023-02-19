@@ -44,6 +44,7 @@ export default function JournalForm() {
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        placeholder="Title"
       />
       <textarea
         type="text"

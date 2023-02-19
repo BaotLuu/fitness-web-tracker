@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useWorkoutPlan1Context } from "../../hooks/useWorkoutPlan1Context";
+import { useWorkoutPlanContext } from "../../hooks/useWorkoutPlanContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function WorkoutPlanForm1() {
@@ -9,7 +9,7 @@ export default function WorkoutPlanForm1() {
   const [date, setDate] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState(null);
-  const { dispatch } = useWorkoutPlan1Context();
+  const { dispatch } = useWorkoutPlanContext();
   const { user } = useAuthContext();
 
   const handleSubmitWP1 = async (e) => {
@@ -39,7 +39,7 @@ export default function WorkoutPlanForm1() {
       setDate("");
       setError(null);
       console.log(json);
-      dispatch({ type: "CREATE_WP1", payload: json });
+      dispatch({ type: "CREATE_WORKOUTPLAN", payload: json });
     }
   };
 

@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useGoalContext } from "../../hooks/useGoalContext";
+import { useFGoalContext } from "../../hooks/useFGoalContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
-function GoalDetails({ goal }) {
-  const { dispatch } = useGoalContext();
+function FGoalDetails({ fgoal }) {
+  const { dispatch } = useFGoalContext();
   const { user } = useAuthContext();
-
+  const [sTime, setStartTime] = useState("");
   const [error, setError] = useState(null);
+  const [eTime, setEndTime] = useState("");
+  const [sDistance, setSDistance] = useState("");
+  const [eDistance, setEDistance] = useState("");
+  const [timeframe, setTimeFrame] = useState("");
   const [title, setTitle] = useState("");
   const [edit, setEdit] = useState(false);
-  const [sWeight, setstartWeight] = useState("");
-  const [eWeight, setEndweight] = useState("");
-  const [sRep, setSrep] = useState("");
-  const [eRep, setERep] = useState("");
-  const [timeframe, setTimeFrame] = useState("");
 
   const handleClick = async () => {
-    const response = await fetch("/api/lgoal/liftinggoal/" + goal._id, {
+    const response = await fetch("/api/fgoal/fitnessgoal/" + fgoal._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -26,14 +25,14 @@ function GoalDetails({ goal }) {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_GOAL", payload: json });
+      dispatch({ type: "DELETE_FGOAL", payload: json });
     }
   };
 
   const Update = async (e) => {
-    const workouts = { title, sWeight, eWeight, sRep, eRep, timeframe };
+    const workouts = { title, sTime, eTime, sDistance, eDistance, timeframe };
 
-    const response = await fetch("/api/lgoal/liftinggoal/" + goal._id, {
+    const response = await fetch("/api/fgoal/fitnessgoal/" + fgoal._id, {
       method: "PATCH",
       body: JSON.stringify(workouts),
       headers: {
@@ -55,7 +54,7 @@ function GoalDetails({ goal }) {
 
   return (
     <div className="workout-details">
-      {!edit && <h4>{goal.title}</h4>}
+      {!edit && <h4>{fgoal.title}</h4>}
       {edit && (
         <input
           placeholder="Title"
@@ -68,83 +67,86 @@ function GoalDetails({ goal }) {
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Starting Weight: <a className="workout-details-a">{goal.sWeight}</a>{" "}
+            Starting Body Weight:{" "}
+            <a className="workout-details-a">{fgoal.sTime}</a>
           </strong>
         )}
-
         {edit && (
           <input
-            placeholder="Starting Weight"
+            placeholder="Starting Body Weight"
             className="update-input"
             type="text"
-            value={sWeight}
-            onChange={(e) => setstartWeight(e.target.value)}
+            value={sTime}
+            onChange={(e) => setStartTime(e.target.value)}
           />
         )}
       </p>
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Goal Weight to lift:{" "}
-            <a className="workout-details-a">{goal.eWeight}</a>
+            Goal Body Weight:{" "}
+            <a className="workout-details-a"> {fgoal.eTime}</a>
           </strong>
         )}
-
         {edit && (
           <input
-            placeholder="Goal Weight to reach"
+            placeholder="Body Weight you want to reach"
             className="update-input"
             type="text"
-            value={eWeight}
-            onChange={(e) => setEndweight(e.target.value)}
+            value={eTime}
+            onChange={(e) => setEndTime(e.target.value)}
           />
         )}
       </p>
+
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Repetitions:<a className="workout-details-a">{goal.sRep}</a>{" "}
+            Calories Consumed:{" "}
+            <a className="workout-details-a"> {fgoal.sDistance}</a>
           </strong>
         )}
 
         {edit && (
           <input
-            placeholder="Repetitioons"
+            placeholder="Calories Consumed"
             className="update-input"
             type="text"
-            value={sRep}
-            onChange={(e) => setSrep(e.target.value)}
+            value={sDistance}
+            onChange={(e) => setSDistance(e.target.value)}
           />
         )}
       </p>
+
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Goal Repetitions: <a className="workout-details-a">{goal.sRep}</a>
+            Calories Burned:
+            <a className="workout-details-a"> {fgoal.eDistance}</a>
           </strong>
         )}
-
         {edit && (
           <input
-            placeholder="Goal Repetition to reach"
+            placeholder="Calories Burned"
             className="update-input"
             type="text"
-            value={eRep}
-            onChange={(e) => setERep(e.target.value)}
+            value={eDistance}
+            onChange={(e) => setEDistance(e.target.value)}
           />
         )}
       </p>
+
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            End of goal date:{" "}
-            <a className="workout-details-a">{goal.timeframe} </a>
+            End of goal Date:
+            <a className="workout-details-a"> {fgoal.timeframe}</a>{" "}
           </strong>
         )}
 
         {edit && (
           <input
-            placeholder="Timeframe"
+            placeholder="End of goal Date"
             className="update-input"
             type="text"
             value={timeframe}
@@ -153,7 +155,7 @@ function GoalDetails({ goal }) {
         )}
       </p>
       <p>
-        {formatDistanceToNow(new Date(goal.createdAt), { addSuffix: true })}
+        {formatDistanceToNow(new Date(fgoal.createdAt), { addSuffix: true })}
       </p>
 
       <span onClick={handleClick} className="material-symbols-outlined">
@@ -179,4 +181,4 @@ function GoalDetails({ goal }) {
   );
 }
 
-export default GoalDetails;
+export default FGoalDetails;

@@ -8,6 +8,7 @@ const goalRoutes = require("./routes/goals");
 const fgoalRoutes = require("./routes/fgoals");
 const workoutplanRoutes = require("./routes/workoutplan");
 const workoutplanRoutes1 = require("./routes/workoutplan1");
+const workoutplanRoutes2 = require("./routes/workoutplan2");
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use("/api/lgoal", goalRoutes);
 app.use("/api/fgoal", fgoalRoutes);
 app.use("/api/workoutplan", workoutplanRoutes);
 app.use("/api/workoutplan1", workoutplanRoutes1);
+app.use("/api/workoutplan2", workoutplanRoutes2);
 
 //connect to db
 mongoose

@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { useWorkoutPlan1Context } from "../hooks/useWorkoutPlan1Context";
+import { useWorkoutPlanContext } from "../hooks/useWorkoutPlanContext";
 
 //components
-import WorkoutPlanDetails1 from "../components/Workout Plan 1/WorkoutPlanDetails1";
-import WorkoutPlanForm1 from "../components/Workout Plan 1/WorkoutPlanForm1";
+import WorkoutPlanDetails1 from "../components/Workout Plan 2/WorkoutPlanDetails1";
+import WorkoutPlanForm1 from "../components/Workout Plan 2/WorkoutPlanForm1";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const WorkoutPlan1 = () => {
-  const { workoutplan1, dispatch } = useWorkoutPlan1Context();
+  const { workoutplan, dispatch } = useWorkoutPlanContext();
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const WorkoutPlan1 = () => {
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({ type: "SET_WP1", payload: json });
+        dispatch({ type: "SET_WORKOUTPS", payload: json });
       }
     };
 
@@ -36,11 +36,11 @@ const WorkoutPlan1 = () => {
       </div>
       <div className="home">
         <div className="workouts">
-          {workoutplan1 &&
-            workoutplan1.map((workoutplan1) => (
+          {workoutplan &&
+            workoutplan.map((workoutplan) => (
               <WorkoutPlanDetails1
-                key={workoutplan1._id}
-                workoutplan1={workoutplan1}
+                key={workoutplan._id}
+                workoutplan={workoutplan}
               />
             ))}
         </div>

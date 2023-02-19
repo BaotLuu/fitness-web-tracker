@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useFGoalContext } from "../../hooks/useFGoalContext";
+import { useGoalContext } from "../../hooks/useGoalContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
-function FGoalDetails({ fgoal }) {
-  const { dispatch } = useFGoalContext();
+function GoalDetails({ goal }) {
+  const { dispatch } = useGoalContext();
   const { user } = useAuthContext();
-  const [sTime, setStartTime] = useState("");
+
   const [error, setError] = useState(null);
-  const [eTime, setEndTime] = useState("");
-  const [sDistance, setSDistance] = useState("");
-  const [eDistance, setEDistance] = useState("");
-  const [timeframe, setTimeFrame] = useState("");
   const [title, setTitle] = useState("");
   const [edit, setEdit] = useState(false);
+  const [sWeight, setstartWeight] = useState("");
+  const [eWeight, setEndweight] = useState("");
+  const [sRep, setSrep] = useState("");
+  const [eRep, setERep] = useState("");
+  const [timeframe, setTimeFrame] = useState("");
 
   const handleClick = async () => {
-    const response = await fetch("/api/fgoal/fitnessgoal/" + fgoal._id, {
+    const response = await fetch("/api/lgoal/liftinggoal/" + goal._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -25,14 +26,14 @@ function FGoalDetails({ fgoal }) {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_FGOAL", payload: json });
+      dispatch({ type: "DELETE_GOAL", payload: json });
     }
   };
 
   const Update = async (e) => {
-    const workouts = { title, sTime, eTime, sDistance, eDistance, timeframe };
+    const workouts = { title, sWeight, eWeight, sRep, eRep, timeframe };
 
-    const response = await fetch("/api/fgoal/fitnessgoal/" + fgoal._id, {
+    const response = await fetch("/api/lgoal/liftinggoal/" + goal._id, {
       method: "PATCH",
       body: JSON.stringify(workouts),
       headers: {
@@ -54,7 +55,7 @@ function FGoalDetails({ fgoal }) {
 
   return (
     <div className="workout-details">
-      {!edit && <h4>{fgoal.title}</h4>}
+      {!edit && <h4>{goal.title}</h4>}
       {edit && (
         <input
           placeholder="Title"
@@ -67,85 +68,86 @@ function FGoalDetails({ fgoal }) {
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Starting Time: <a className="workout-details-a">{fgoal.sTime}</a>
+            Starting Weight/Distance:{" "}
+            <a className="workout-details-a">{goal.sWeight}</a>{" "}
           </strong>
         )}
+
         {edit && (
           <input
-            placeholder="Start time"
+            placeholder="Starting Weight/distance"
             className="update-input"
             type="text"
-            value={sTime}
-            onChange={(e) => setStartTime(e.target.value)}
+            value={sWeight}
+            onChange={(e) => setstartWeight(e.target.value)}
           />
         )}
       </p>
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Goal Time to Reach:{" "}
-            <a className="workout-details-a"> {fgoal.eTime}</a>
+            Goal Weight/Distance to reach:{" "}
+            <a className="workout-details-a">{goal.eWeight}</a>
           </strong>
         )}
+
         {edit && (
           <input
-            placeholder="Goal time to reach"
+            placeholder=" Goal Weight/Distance you want reach"
             className="update-input"
             type="text"
-            value={eTime}
-            onChange={(e) => setEndTime(e.target.value)}
+            value={eWeight}
+            onChange={(e) => setEndweight(e.target.value)}
           />
         )}
       </p>
-
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Starting Distance:{" "}
-            <a className="workout-details-a"> {fgoal.sDistance}</a>
+            Starting Repetitions/Time:
+            <a className="workout-details-a">{goal.sRep}</a>{" "}
           </strong>
         )}
 
         {edit && (
           <input
-            placeholder="Starting Distance"
+            placeholder="Starting Repetitions/Time"
             className="update-input"
             type="text"
-            value={sDistance}
-            onChange={(e) => setSDistance(e.target.value)}
+            value={sRep}
+            onChange={(e) => setSrep(e.target.value)}
           />
         )}
       </p>
-
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Distance Goal:
-            <a className="workout-details-a"> {fgoal.eDistance}</a>
+            Goal Repetitions/Time to reach:{" "}
+            <a className="workout-details-a">{goal.sRep}</a>
           </strong>
         )}
+
         {edit && (
           <input
-            placeholder="Distance Goal"
+            placeholder="Goal Repetitions/Time you want to reach"
             className="update-input"
             type="text"
-            value={eDistance}
-            onChange={(e) => setEDistance(e.target.value)}
+            value={eRep}
+            onChange={(e) => setERep(e.target.value)}
           />
         )}
       </p>
-
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            End of goal Date:
-            <a className="workout-details-a"> {fgoal.timeframe}</a>{" "}
+            End of goal date:{" "}
+            <a className="workout-details-a">{goal.timeframe} </a>
           </strong>
         )}
 
         {edit && (
           <input
-            placeholder="End of goal Date"
+            placeholder="Timeframe"
             className="update-input"
             type="text"
             value={timeframe}
@@ -154,7 +156,7 @@ function FGoalDetails({ fgoal }) {
         )}
       </p>
       <p>
-        {formatDistanceToNow(new Date(fgoal.createdAt), { addSuffix: true })}
+        {formatDistanceToNow(new Date(goal.createdAt), { addSuffix: true })}
       </p>
 
       <span onClick={handleClick} className="material-symbols-outlined">
@@ -180,4 +182,4 @@ function FGoalDetails({ fgoal }) {
   );
 }
 
-export default FGoalDetails;
+export default GoalDetails;
