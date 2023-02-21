@@ -4,7 +4,7 @@ import { useJournalContext } from "../../hooks/useJournalContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useState } from "react";
 
-function JournalDetails({ journal, update }) {
+function JournalDetails({ journal }) {
   const { dispatch } = useJournalContext();
   const { user } = useAuthContext();
   const [note, setNote] = useState("");
@@ -24,6 +24,12 @@ function JournalDetails({ journal, update }) {
     if (response.ok) {
       dispatch({ type: "DELETE_JOURNAL", payload: json });
     }
+  };
+
+  const handleEdit = () => {
+    setTitle(journal.title);
+    setNote(journal.note);
+    setEdit(true);
   };
 
   const Update = async (e) => {
@@ -63,7 +69,7 @@ function JournalDetails({ journal, update }) {
       )}
 
       <p className="workout-note">
-        {!edit && <h5>{journal.notes}</h5>}
+        {!edit && <a>{journal.notes}</a>}
         {edit && (
           <input
             placeholder="Notes"
@@ -83,7 +89,7 @@ function JournalDetails({ journal, update }) {
         delete
       </span>
       {!edit && (
-        <span onClick={() => setEdit(true)} className="workout-details-span">
+        <span onClick={handleEdit} className="workout-details-span">
           Update
         </span>
       )}

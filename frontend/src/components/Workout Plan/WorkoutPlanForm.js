@@ -6,7 +6,6 @@ export default function WorkoutPlanForm() {
   const [title, setTitle] = useState("");
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
-  const [date, setDate] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState(null);
   const { dispatch } = useWorkoutPlanContext();
@@ -15,7 +14,7 @@ export default function WorkoutPlanForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const workoutp = { title, weight, reps, date, note };
+    const workoutp = { title, weight, reps, note };
 
     const response = await fetch("/api/workoutplan", {
       method: "POST",
@@ -36,7 +35,7 @@ export default function WorkoutPlanForm() {
       setWeight("");
       setReps("");
       setNote("");
-      setDate("");
+
       setError(null);
       console.log(json);
       dispatch({ type: "CREATE_WORKOUTPLAN", payload: json });
@@ -45,12 +44,6 @@ export default function WorkoutPlanForm() {
 
   return (
     <form className="create" onSubmit={handleSubmit}>
-      <h3>Workout date</h3>
-      <input
-        type="text"
-        onChange={(e) => setDate(e.target.value)}
-        value={date}
-      />
       <h3>Add new workout</h3>
       <input
         type="text"

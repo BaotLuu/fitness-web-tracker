@@ -24,8 +24,6 @@ const Journal = () => {
     if (user) {
       fetchJournal();
     }
-
-    console.log("use effect journal");
   }, []);
 
   return (

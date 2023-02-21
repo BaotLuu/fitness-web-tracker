@@ -29,6 +29,16 @@ function FGoalDetails({ fgoal }) {
     }
   };
 
+  const handleEdit = () => {
+    setTitle(fgoal.title);
+    setStartTime(fgoal.sTime);
+    setEndTime(fgoal.eTime);
+    setSDistance(fgoal.sDistance);
+    setEDistance(fgoal.eDistance);
+    setTimeFrame(fgoal.timeframe);
+    setEdit(true);
+  };
+
   const Update = async (e) => {
     const workouts = { title, sTime, eTime, sDistance, eDistance, timeframe };
 
@@ -162,7 +172,7 @@ function FGoalDetails({ fgoal }) {
         delete
       </span>
       {!edit && (
-        <span onClick={() => setEdit(true)} className="workout-details-span">
+        <span onClick={handleEdit} className="workout-details-span">
           Update
         </span>
       )}

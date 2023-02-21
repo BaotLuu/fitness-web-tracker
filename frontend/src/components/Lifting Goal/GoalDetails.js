@@ -30,6 +30,16 @@ function GoalDetails({ goal }) {
     }
   };
 
+  const handleEdit = () => {
+    setTitle(goal.title);
+    setstartWeight(goal.sWeight);
+    setEndweight(goal.eWeight);
+    setSrep(goal.sRep);
+    setERep(goal.eRep);
+    setTimeFrame(goal.timeframe);
+    setEdit(true);
+  };
+
   const Update = async (e) => {
     const workouts = { title, sWeight, eWeight, sRep, eRep, timeframe };
 
@@ -163,7 +173,7 @@ function GoalDetails({ goal }) {
         delete
       </span>
       {!edit && (
-        <span onClick={() => setEdit(true)} className="workout-details-span">
+        <span onClick={handleEdit} className="workout-details-span">
           Update
         </span>
       )}

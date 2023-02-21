@@ -28,6 +28,14 @@ export default function WorkoutDetails({ workout }) {
     }
   };
 
+  const handleEdit = () => {
+    setTitle(workout.title);
+    setReps(workout.reps);
+    setWeight(workout.weight);
+    setNote(workout.note);
+    setEdit(true);
+  };
+
   const Update = async (e) => {
     const workouts = { title, weight, reps, note };
 
@@ -117,7 +125,7 @@ export default function WorkoutDetails({ workout }) {
         delete
       </span>
       {!edit && (
-        <span onClick={() => setEdit(true)} className="workout-details-span">
+        <span onClick={handleEdit} className="workout-details-span">
           Update
         </span>
       )}
