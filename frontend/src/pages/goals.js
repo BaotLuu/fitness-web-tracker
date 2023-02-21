@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import GoalDetails from "../components/Fitness Goal/GoalDetails";
-import GoalForm from "../components/Fitness Goal/GoalForm";
+import GoalDetails from "../components/Lifting Goal/GoalDetails";
+import GoalForm from "../components/Lifting Goal/GoalForm";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useGoalContext } from "../hooks/useGoalContext";
 

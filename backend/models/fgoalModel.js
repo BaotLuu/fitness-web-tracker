@@ -6,6 +6,7 @@ const fgoalSchema = new Schema(
   {
     title: {
       type: String,
+      required: true,
     },
     sTime: {
       type: String,

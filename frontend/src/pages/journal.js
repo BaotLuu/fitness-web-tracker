@@ -4,7 +4,7 @@ import JournalForm from "../components/Journal/JournalForm";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useJournalContext } from "../hooks/useJournalContext";
 
-const Journal = ({}) => {
+const Journal = () => {
   const { journals, dispatch } = useJournalContext();
   const { user } = useAuthContext();
 

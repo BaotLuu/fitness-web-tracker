@@ -8,7 +8,6 @@ import { JournalContextProvider } from "./context/JournalContext";
 import { GoalContextProvider } from "./context/GoalContext";
 import { FGoalContextProvider } from "./context/FGoalContext";
 import { WorkoutPlanContextProvider } from "./context/WorkoutPlanContext";
-import { WorkoutPlan1ContextProvider } from "./context/WorkoutPlan1Context";
 
 export const ThemeContext = createContext(null);
 
@@ -22,9 +21,7 @@ root.render(
             <GoalContextProvider>
               <FGoalContextProvider>
                 <WorkoutPlanContextProvider>
-                  <WorkoutPlan1ContextProvider>
-                    <App />
-                  </WorkoutPlan1ContextProvider>
+                  <App />
                 </WorkoutPlanContextProvider>
               </FGoalContextProvider>
             </GoalContextProvider>

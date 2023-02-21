@@ -32,7 +32,6 @@ header .container {
   white-space: nowrap;
   font-size: 1.5rem;
   list-style: none;
-  margin-right: 2rem;
 }
 
 .nav-items:first-child {
@@ -175,6 +174,11 @@ form.login {
   color: white;
 }
 
+.workoutplans-items {
+  text-decoration: none;
+  color: white;
+}
+
 .herolink-items:hover,
 .herolink-items:focus,
 .material-symbols-outlined:hover,
@@ -191,6 +195,7 @@ form.login {
 .workout-details-a {
   color: #ac1a43;
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .update-input {
@@ -215,23 +220,148 @@ form.login {
   color: #ac1a43;
 }
 
+#dark .faq {
+  color: #ac1a43;
+}
+
+#dark .login {
+  background-color: #2e2d2d;
+}
+
+#dark .signup {
+  background-color: #2e2d2d;
+}
+
+.error {
+  font-size: 2rem;
+}
+
+#dark .error {
+  color: red;
+}
+
 .switch {
   position: absolute;
-  right: 20px;
-  top: 50px;
+  right: 7%;
+  top: 1%;
 }
 
 .switch label {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 5px;
+}
+.switch span {
+  margin-right: 5px;
 }
 
 .workoutplans {
   font-size: 2rem;
   gap: 20px;
   display: flex;
-
   justify-content: center;
   margin-top: 15%;
+}
+
+.open-btn {
+  display: none;
+}
+
+#hidden {
+  display: flex;
+}
+
+@media only screen and (max-width: 1000px) {
+  .herolink-items h2 {
+    font-size: 20px;
+  }
+  .switch {
+    position: absolute;
+    top: 1%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .herolink-items h2 {
+    font-size: 15px;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+  }
+  .workouts {
+    width: auto;
+  }
+  .workout-details-span {
+    position: absolute;
+    right: 15%;
+    top: 70%;
+  }
+  .material-symbols-outlined {
+    position: absolute;
+    right: 3%;
+    top: 70%;
+  }
+
+  .hero-section {
+    width: auto;
+    text-align: center;
+  }
+
+  .workoutplans {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .open-btn {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    right: 6%;
+  }
+
+  .nav-rightside {
+    display: flex;
+    position: absolute;
+    top: 10%;
+  }
+
+  #hidden {
+    position: absolute;
+    left: 0px;
+    top: 85px;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 90;
+    gap: 0;
+  }
+  #hidden .herolink-items {
+    display: flex;
+  }
+  .herolink-items {
+    display: none;
+  }
+  #hidden h2 {
+    font-size: 18px;
+  }
+
+  #dark #hidden {
+    background-color: #2c2b2b;
+  }
+
+  .logout-btn {
+    max-height: 35px;
+  }
+
+  .nav-list {
+    padding: 0;
+  }
 }

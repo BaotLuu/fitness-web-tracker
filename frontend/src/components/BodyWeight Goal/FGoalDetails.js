@@ -158,7 +158,7 @@ function FGoalDetails({ fgoal }) {
         {formatDistanceToNow(new Date(fgoal.createdAt), { addSuffix: true })}
       </p>
 
-      <span onClick={handleClick} className="material-symbols-outlined">
+      <span onClick={handleClick} className="material-symbols-outlined ">
         delete
       </span>
       {!edit && (

@@ -113,7 +113,7 @@ export default function WorkoutPlanDetails2({ workoutplan }) {
           addSuffix: true,
         })}
       </p>
-      <span onClick={handleClick} className="material-symbols-outlined">
+      <span onClick={handleClick} className="material-symbols-outlined ">
         delete
       </span>
       {!edit && (

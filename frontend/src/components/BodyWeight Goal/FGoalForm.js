@@ -101,7 +101,7 @@ export default function FGoalForm() {
         placeholder="Timeframe to reach the goal"
       />
       <button className="addWorkout">Add Goal</button>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="error">Title needed</div>}
     </form>
   );
 }

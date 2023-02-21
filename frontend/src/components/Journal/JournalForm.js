@@ -53,7 +53,7 @@ export default function JournalForm() {
         value={notes}
       />
       <button className="addWorkout">Add Entry</button>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="error">Title needed</div>}
     </form>
   );
 }

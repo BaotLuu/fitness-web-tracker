@@ -79,7 +79,7 @@ export default function WorkoutPlanForm1() {
       />
 
       <button className="addWorkout">Add Plan</button>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="error">Exercise Title needed</div>}
     </form>
   );
 }

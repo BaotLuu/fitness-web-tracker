@@ -24,7 +24,7 @@ const FGoal = () => {
     if (user) {
       fetchFGoal();
     }
-  }, []);
+  }, [dispatch, user]);
   return (
     <div>
       <div className="hero-section">

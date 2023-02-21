@@ -68,8 +68,8 @@ function GoalDetails({ goal }) {
       <p className="workout-details-p">
         {!edit && (
           <strong>
-            Starting Weight/Distance:{" "}
-            <a className="workout-details-a">{goal.sWeight}</a>{" "}
+            Starting Weight/Distance:
+            <a className="workout-details-a">{goal.sWeight}</a>
           </strong>
         )}
 
@@ -159,7 +159,7 @@ function GoalDetails({ goal }) {
         {formatDistanceToNow(new Date(goal.createdAt), { addSuffix: true })}
       </p>
 
-      <span onClick={handleClick} className="material-symbols-outlined">
+      <span onClick={handleClick} className="material-symbols-outlined ">
         delete
       </span>
       {!edit && (

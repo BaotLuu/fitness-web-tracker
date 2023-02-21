@@ -6,6 +6,7 @@ const goalSchema = new Schema(
   {
     title: {
       type: String,
+      required: true,
     },
     sWeight: {
       type: String,

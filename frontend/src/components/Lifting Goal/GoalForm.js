@@ -101,7 +101,7 @@ export default function GoalForm() {
         placeholder="Timeframe to reach the goal"
       />
       <button className="addWorkout">Add Goal</button>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="error">Exercise Title needed</div>}
     </form>
   );
 }

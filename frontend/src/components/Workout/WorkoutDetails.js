@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -114,7 +113,7 @@ export default function WorkoutDetails({ workout }) {
       <p>
         {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
       </p>
-      <span onClick={handleClick} className="material-symbols-outlined">
+      <span onClick={handleClick} className="material-symbols-outlined ">
         delete
       </span>
       {!edit && (

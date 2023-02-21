@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useJournalContext } from "../../hooks/useJournalContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
@@ -63,7 +63,7 @@ function JournalDetails({ journal, update }) {
       )}
 
       <p className="workout-note">
-        {!edit && <a>{journal.notes}</a>}
+        {!edit && <h5>{journal.notes}</h5>}
         {edit && (
           <input
             placeholder="Notes"
@@ -79,7 +79,7 @@ function JournalDetails({ journal, update }) {
         {formatDistanceToNow(new Date(journal.createdAt), { addSuffix: true })}
       </p>
 
-      <span onClick={handleClick} className="material-symbols-outlined">
+      <span onClick={handleClick} className="material-symbols-outlined ">
         delete
       </span>
       {!edit && (
