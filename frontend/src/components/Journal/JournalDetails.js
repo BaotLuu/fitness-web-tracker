@@ -28,7 +28,7 @@ function JournalDetails({ journal }) {
 
   const handleEdit = () => {
     setTitle(journal.title);
-    setNote(journal.note);
+    setNote(journal.notes);
     setEdit(true);
   };
 
